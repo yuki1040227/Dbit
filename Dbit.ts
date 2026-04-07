@@ -1,29 +1,28 @@
 
-//
 //% weight=5 color=#1BAFEA icon="\uf1b2"
 namespace sloth {
 
     export enum PWMChn {
         //% blockId="Right_leg" block="右侧腿"
-        Right_Leg = 8,
+        Right_Leg = 6,
         //% blockId="Right_Foot" block="右侧脚尖"
-        Right_Foot = 9,
+        Right_Foot = 7,
         //% blockId="Left_Foot" block="左侧脚尖"
-        Left_Foot = 10,
+        Left_Foot = 8,
         //% blockId="Left_leg" block="左侧腿"
-        Left_Leg = 11,
+        Left_Leg = 9,
         CH1 = 0,
         CH2 = 1,
         CH3 = 2,
         CH4 = 3,
         CH5 = 4,
         CH6 = 5,
-        CH7 = 10,
-        CH8 = 11,
-        CH9 = 12,
-        CH10 = 13,
-        CH11 = 14,
-        CH12 = 15
+        CH7 = 6,
+        CH8 = 7,
+        CH9 = 8,
+        CH10 = 9,
+        CH11 = 10,
+        CH12 = 11
     }
 
     let right_leg = PWMChn.Right_Leg
@@ -382,10 +381,6 @@ namespace sloth {
      * Servo move, input 4 elements array, to move all servo
      * @param speed ; eg: 50
     */
-    //% blockId=sloth_servo_write_all block="设置所有舵机角度 %angles"
-    //% weight=30
-    //% advanced=true
-    //% angles.min=0 angles.max=180
     export function servo_write_all(angles: number[]): void {
         for (let i = 0; i < servos.length; i++) {
             servo_write(servos[i], origin_positions[i] + angles[i] + offset[i]); // ralative angle to home
@@ -396,10 +391,6 @@ namespace sloth {
      * Servo move, input 4 elements array, to move all servo
      * @param speed ; eg: 50
     */
-    //% blockId=sloth_servo_move block="设置舵机移动到 %target| %speed|dps"
-    //% weight=40
-    //% advanced=true
-    //% speed.min=1 speed.max=100
     export function servo_move(targets: number[], speed: number = 50): void {
         let delta = [0, 0, 0, 0]
         let steps = [0, 0, 0, 0]
@@ -421,7 +412,7 @@ namespace sloth {
             }
 
             for (let i = 0; i < max_delta; i++) {
-                for (let j = 0; j <= servos.length; j++) {
+                for (let j = 0; j < servos.length; j++) {
                     if (i % steps[j] == 0) {
                         if (servo_positions[j] != targets[j]) {
                             servo_positions[j] = servo_positions[j] + (delta[j] / Math.abs(delta[j]));
