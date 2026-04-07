@@ -5,7 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "core": "*",
-    "radio": "*"
+    "radio": "*",
+    "makerobot": "github:zhuning239/makerobot"
   },
   "files": [
     "Dbit.ts"
