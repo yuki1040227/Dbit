@@ -1,7 +1,7 @@
 
 //
 //% weight=5 color=#1BAFEA icon="\uf1b2"
-namespace sloth {
+namespace Dbit {
 
     export enum PWMChn {
         //% blockId="Right_leg" block="右侧腿"
@@ -461,7 +461,7 @@ namespace sloth {
     }
 
     /**
-     * Set gesture for sloth:bit: fill in the blank to drive servo turn the angle and show gesture for you. This block 
+     * Set gesture for Dbit:bit: fill in the blank to drive servo turn the angle and show gesture for you. This block
      * is just for advance, pay attention to set value, and provide blocking protection to the servos
      */
     //% blockId=sloth_set_gesture block="设置姿态 | 左侧腿 %o1| 左侧脚尖 %o2| 右侧腿 %o3| 右侧脚尖 %o4"
@@ -535,18 +535,18 @@ namespace sloth {
     function cali_value() {    //  select_mode_flag == 2
         if (servo_number == 1) {
             right_leg_value = temp_cali_value
-            //sloth.servo_write(servos[2], 90 + right_leg_value)
+            //Dbit.servo_write(servos[2], 90 + right_leg_value)
         } else if (servo_number == 2) {
             left_leg_value = temp_cali_value
-            //sloth.servo_write(servos[0], 90 + left_leg_value)
+            //Dbit.servo_write(servos[0], 90 + left_leg_value)
         } else if (servo_number == 3) {
             right_foot_value = temp_cali_value
-            //sloth.servo_write(servos[3], 90 + right_foot_value)
+            //Dbit.servo_write(servos[3], 90 + right_foot_value)
         } else if (servo_number == 4) {
             left_foot_value = temp_cali_value
-            //sloth.servo_write(servos[1], 90 + left_foot_value)
+            //Dbit.servo_write(servos[1], 90 + left_foot_value)
         }
-        sloth.set_offset(
+        Dbit.set_offset(
             right_leg_value,
             left_leg_value,
             right_foot_value,
@@ -679,7 +679,7 @@ namespace sloth {
             let flag = false
             let last_flag = false
             while (true) {
-                let value = sloth.volume_of_heard()
+                let value = Dbit.volume_of_heard()
                 if (value > threshold) {
                     flag = true
                 } else {
@@ -738,12 +738,12 @@ namespace sloth {
     export function servo_sweep(): void {
         let item = -90
         for (let i = 0; i < 181; i++) {
-            sloth.servo_write_all([item, item, item, item])
+            Dbit.servo_write_all([item, item, item, item])
             item = item + 1
             basic.pause(10)
         }
         for (let i = 0; i < 181; i++) {
-            sloth.servo_write_all([item, item, item, item])
+            Dbit.servo_write_all([item, item, item, item])
             item = item - 1
             basic.pause(10)
         }

@@ -6,7 +6,6 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "makerobot": "github:zhuning239/makerobot"
     },
     "files": [
         "README.md",
