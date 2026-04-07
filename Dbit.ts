@@ -382,10 +382,6 @@ namespace Dbit {
      * Servo move, input 4 elements array, to move all servo
      * @param speed ; eg: 50
     */
-    //% blockId=sloth_servo_write_all block="设置所有舵机角度 %angles"
-    //% weight=30
-    //% advanced=true
-    //% angles.min=0 angles.max=180
     export function servo_write_all(angles: number[]): void {
         for (let i = 0; i < servos.length; i++) {
             servo_write(servos[i], origin_positions[i] + angles[i] + offset[i]); // ralative angle to home
@@ -396,10 +392,6 @@ namespace Dbit {
      * Servo move, input 4 elements array, to move all servo
      * @param speed ; eg: 50
     */
-    //% blockId=sloth_servo_move block="设置舵机移动到 %target| %speed|dps"
-    //% weight=40
-    //% advanced=true
-    //% speed.min=1 speed.max=100
     export function servo_move(targets: number[], speed: number = 50): void {
         let delta = [0, 0, 0, 0]
         let steps = [0, 0, 0, 0]
