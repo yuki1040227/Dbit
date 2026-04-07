@@ -1,4 +1,3 @@
-//% weight=5 color=#1BAFEA icon="\uf1b2"
 namespace Dbit {
 
     export enum PWMChn {
